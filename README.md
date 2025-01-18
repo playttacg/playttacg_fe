@@ -1,1 +1,1 @@
-### PLAYCGTTA
+### PLAYTTACG
