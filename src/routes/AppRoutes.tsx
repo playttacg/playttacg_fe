@@ -6,6 +6,7 @@ import Events from '../pages/Events';
 import Players from '../pages/Players';
 import Rankings from '../pages/Rankings';
 import Gallery from '../pages/Gallery';
+import NotFound from '../pages/NotFound';
 
 const AppRoutes = () => {
 
@@ -19,6 +20,7 @@ const AppRoutes = () => {
                 <Route path='/players' element={<Players />} />
                 <Route path='/rankings' element={<Rankings />} />
                 <Route path='/gallery' element={<Gallery />} />
+                <Route path='/*' element={<NotFound />} />
             </Routes>
         </BrowserRouter>
     )
