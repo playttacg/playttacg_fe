@@ -6,28 +6,16 @@ import React, {
     useMemo,
     useState,
 } from "react";
-
-export interface ApiResponseData<T> {
-    success: boolean;
-    errorMsg: string;
-    response: T;
-    count?: number;
-    limit?: number;
-    totalPages?: number;
-  };
-
-interface IHttpMethodContext {
-  showApiLoader: boolean;
-  get: <T>(
-    endpoint: string,
-    showLoader?: boolean
-  ) => Promise<ApiResponseData<T>>;
-}
+import { ApiResponseData, IHttpMethodContext } from "../interface/httpInterfaces";
+import envConfig from "../config/env.config";
 
 export const HttpMethodContext = createContext<
     IHttpMethodContext | undefined
 >(undefined);
 
+const Axios = axios.create({
+    baseURL: envConfig.VITE_API_BASE_URL,
+});
 
 export const HttpMethodContextProvider: React.FC<{children: React.ReactNode}> = ({ children }) => {
 
@@ -40,9 +28,10 @@ export const HttpMethodContextProvider: React.FC<{children: React.ReactNode}> = 
         ): Promise<ApiResponseData<T>> => {
             if (showLoader) setShowApiLoader(true);
 
-            return axios.get(`${process.env.API_BASE_URL}/${endpoint}`)
+            return Axios
+                .get(endpoint)
                 .then((res) => {
-                    console.log(`🟢 Get: ${endpoint} ,${res.status}`);
+                    console.log(`🟢 Get: ${endpoint}, ${res.status}`);
                     return {
                         success: true,
                         errorMsg: "",
@@ -50,7 +39,7 @@ export const HttpMethodContextProvider: React.FC<{children: React.ReactNode}> = 
                     }
                 })
                 .catch(err => {
-                    console.log(`🔴 Get: ${endpoint} ,${err}`);
+                    console.log(`🔴 Get: ${endpoint}, ${err}`);
                     return {
                         success: false, 
                         errorMsg: err, 
@@ -58,7 +47,7 @@ export const HttpMethodContextProvider: React.FC<{children: React.ReactNode}> = 
                     }
                 })
                 .finally(() => {
-                    if (showLoader) setShowApiLoader(true);
+                    if (showLoader) setShowApiLoader(false);
                 })
         },[]
     );

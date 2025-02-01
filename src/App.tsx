@@ -1,12 +1,15 @@
 import './App.css'
+import { HttpMethodContextProvider } from './context/httpContext';
 import AppRoutes from './routes/AppRoutes';
 
 const App:React.FC = () => {
 
   return (
-    <AppRoutes >
-      
-    </AppRoutes>
+    <HttpMethodContextProvider>
+      <AppRoutes >
+        
+      </AppRoutes>
+    </HttpMethodContextProvider>
   );
 }
 
