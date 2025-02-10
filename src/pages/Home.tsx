@@ -1,5 +1,7 @@
 import React, { useEffect } from "react";
 import useNewsApi from "../api/useNewsApi";
+import LatestNewsCard from "../components/Home/LatestNewsCard";
+import { latestNewsCardData } from "../constant/dummyConstant";
 
 const Home: React.FC = () => {
   const { getAllNews } = useNewsApi();
@@ -11,7 +13,10 @@ const Home: React.FC = () => {
     fetchNews();
   }, [getAllNews]);
 
-  return <div>Home</div>;
+  return <div>
+  <LatestNewsCard
+    cardNewsData={latestNewsCardData}
+  /></div>;
 };
 
 export default Home;
