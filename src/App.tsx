@@ -1,14 +1,13 @@
-import LatestNewsCard from './components/Home/LatestNewsCard'
 import './App.css';
-import { latestNewsCardData } from './constant/dummyConstant';
+import { HttpMethodContextProvider } from './context/httpContext';
+import AppRoutes from './routes/AppRoutes';
 
-function App() {
+const App:React.FC = () => {
+
   return (
-    <div className=''>
-      <LatestNewsCard
-        cardNewsData={latestNewsCardData}
-      />
-    </div>
+    <HttpMethodContextProvider>
+      <AppRoutes />
+    </HttpMethodContextProvider>
   );
 }
 
