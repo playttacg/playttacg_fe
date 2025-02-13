@@ -1,0 +1,1 @@
+export const navBarPageNames = ['Home', 'News', 'Events', 'Rankings', 'Players', 'Gallery']
