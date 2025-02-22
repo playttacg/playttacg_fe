@@ -15,7 +15,18 @@ const useNewsApi = () => {
         [get]
     )
 
-    return { getAllNews };
+    const getKRecentNews = useCallback(
+        async<T>(   
+            k: number,
+            showApiLoader= true
+        ): Promise<ApiResponseData<T>> => {
+            const res = await get(`/news?count=${k}`, showApiLoader);
+            return res as ApiResponseData<T>;
+        },
+        [get]
+    )
+
+    return { getAllNews, getKRecentNews };
 } 
 
 export default useNewsApi;
