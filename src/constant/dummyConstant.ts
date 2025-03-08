@@ -1,3 +1,4 @@
+
 export const latestNewsCardData = {
         _id: { $oid: "67962c1ce4a9f1b9c28a0b70" },
         title: "Table Tennis Training Drills for Beginners",
@@ -16,4 +17,15 @@ export const latestNewsCardData = {
         status: "Published",
         isFeatured: false
     
+};
+export const latestEventsCardData = {
+        
+        id: 1,
+        title: "Table Tennis Tournament",
+        date: "2025-01-20T00:00:00.000Z",
+        description: "Join us for the annual table tennis tournament and compete against the best players in the region.",
+        venue: "Main Hall",
+        imageUrl: "../src/assets/Screenshot 2025-01-18 222115 1.png"
+    
+          
 };
