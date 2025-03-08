@@ -11,10 +11,10 @@ const NavBar:React.FC = () => {
         <div className='flex items-center my-4'>
           {navBarPageNames.map((item, index) => {
             return (
-            <>
+            <div className='flex items-center' key={index}>
               <CustomNavLinkText title={item} />
               {index !== navBarPageNames.length - 1 && (<div className='h-[.15rem] w-[.15rem] bg-amber-50 rounded-full mx-3'/>)}
-            </>
+            </div>
             )
           })}
         </div>
