@@ -1,8 +1,9 @@
 import React from "react";
 import LatestNewsCard from "../components/Home/LatestNewsCard";
-import { latestNewsCardData } from "../constant/dummyConstant";
+import { latestNewsCardData, latestEventsCardData } from "../constant/dummyConstant";
 import NavBar from "../components/common/NavBar";
 import BackgroundGradientLines from "../components/BackgroundGradientLines";
+import LatestEventsCard from "../components/Home/LatestEventsCard";
 
 const Home: React.FC = () => {
   
@@ -12,8 +13,10 @@ const Home: React.FC = () => {
       <NavBar />
       <div className="mt-48" />
       <LatestNewsCard cardNewsData={latestNewsCardData} />
+      <LatestEventsCard eventCardData = {latestEventsCardData} />
     </div>
   );
 };
+
 
 export default Home;
